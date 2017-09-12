@@ -24,6 +24,9 @@ $(document).ready(function() {
 		}
 	})
 
+	$("#valor_m2").keyup(atualiza)
+	$("#valor_m_linear").keyup(atualiza)
+
 	$("#largura").keyup(function(event) {
 		var vlargura = $("#largura").val();
 		if (vlargura.length > 0) {
@@ -71,6 +74,15 @@ $(document).ready(function() {
 	});
 
 	$("#nivel_seguranca").keyup(function(event) {
+
+		if ($("#nivel_seguranca").val() > 5) {
+			$("#nivel_seguranca").val(5)
+		}
+
+		if ($("#nivel_seguranca").val() < 1) {
+			$("#nivel_seguranca").val(1)
+		}
+
 		var nivel_seguranca = parseInt($("#nivel_seguranca").val())
 
 		switch (nivel_seguranca) {
@@ -212,7 +224,7 @@ $(document).ready(function() {
 
 			var mL = (comprimento * 6 + altura * 6 + largura * 2 + lateral_espessura * 2) / 100
 
-			$('#metro_linear').text(mL)
+			$('#metro_linear').text(mL.toFixed(2))
 			var valor_linear = (mL * parseFloat($('#valor_m_linear').val())).toFixed(2)
 			$('#valor_linear_text').text( valor_linear )
 
