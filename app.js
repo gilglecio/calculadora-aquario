@@ -229,6 +229,13 @@ $(document).ready(function() {
 			$('#valor_linear_text').text( valor_linear )
 
 			$('#total').text( (parseFloat(valor_linear) + parseFloat(valor_m2)).toFixed(2) )
+
+			var peso_vidro = (espessura * 2.5) * m2
+			var peso_agua = (volume * 0.8)
+
+			$('#peso_vidro').text(peso_vidro.toFixed(2))
+			$('#peso_agua').text(peso_agua.toFixed(2))
+			$('#peso_total').text(peso_vidro + peso_agua)
 		}
 	}
 
